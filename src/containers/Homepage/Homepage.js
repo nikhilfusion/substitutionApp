@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import TopSellingList from '../../components/Homepage/TopSellingList';
-import SearchResultList from '../../components/Search/index';
+import SearchResultList from '../../components/Search/Search';
 import './Homepage.css';
 
 class Homepage extends Component {
@@ -12,7 +12,7 @@ class Homepage extends Component {
       selectedPincode: '444444',
       searchInitiated: false,
     };
-  }s
+  }
 
   render() {
     return (
@@ -26,8 +26,8 @@ class Homepage extends Component {
           </div>
           <div className="impactContainer">Impact here</div>
         </div>
-        <TopSellingList medicineName="xyz" sellingPrice="90" packForm="tablet" />
-        <SearchResultList medicineName="abc" sellingPrice="190" packForm="capsule" />
+        <TopSellingList medicines={[]} />
+        <SearchResultList medicines={[]} />
       </div>
     );
   }
