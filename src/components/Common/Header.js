@@ -8,10 +8,16 @@ class Header extends Component {
 
   constructor(props) {
     super(props);
-
+    this.onChange = this.onChange.bind(this);
     this.state = {
       selectedPincode: '444444',
+      searchText: ''
     };
+  }
+
+  onChange(value){
+    this.setState({'searchText': value});
+    this.props.onChange(value);
   }
 
   render() {
@@ -35,7 +41,7 @@ class Header extends Component {
           </h1>
           <div className="pincodeContainer hidden-xs hidden-sm">Pincode here {this.state.selectedPincode}</div>
           <div className="searchContainer">
-            <SearchBar />
+            <SearchBar onChange= {(val) => { this.onChange(val) }}/>
           </div>
           <div className="impactContainer hidden-sm hidden-xs">Impact here</div>
         </div>
