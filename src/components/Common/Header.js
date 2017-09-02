@@ -25,12 +25,12 @@ class Header extends Component {
           </div>
         </div>
         <div className="container">
-          <h1>BEST DRUG VALUE</h1>
-          <div className="pincodeContainer">Pincode here {this.state.selectedPincode}</div>
+          <h1 className="siteTitle">BEST DRUG VALUE</h1>
+          <div className="pincodeContainer hidden-xs hidden-sm">Pincode here {this.state.selectedPincode}</div>
           <div className="searchContainer">
             <SearchBar />
           </div>
-          <div className="impactContainer">Impact here</div>
+          <div className="impactContainer hidden-sm hidden-xs">Impact here</div>
         </div>
       </div>
     );

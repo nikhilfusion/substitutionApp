@@ -105,3 +105,36 @@
 .cartItemList {
   width: 100%;
 }
+
+.cartFooter {
+  width: 100%;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  padding: 15px;
+}
+
+.cartFooter .totalAmount{
+  font-size: 18px;
+}
+
+.cartFooter.userCart {
+  background-color: #465083;
+}
+
+.cartFooter.bdvCart {
+  background-color: #5cd1be;
+}
+
+.cartFooter .proceedButton {
+
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffffff;
+  background-color: rgba(0,0,0,0.2);
+  padding: 5px 30px;
+  color: #ffffff;
+  border-radius: 15px;
+}
