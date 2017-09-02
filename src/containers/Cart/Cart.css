@@ -1,0 +1,98 @@
+.cartContainer {
+  padding: 15px;
+}
+
+.cartTitle {
+  margin: 0;
+  padding: 15px;
+  text-align: center;
+}
+
+.cartSubHeading {
+  text-align: center;
+  font-size: 14px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.cartWrapper {
+  margin: 0 auto;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cartButtonWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.cartBannerButton {
+  padding: 30px 15px;
+  text-align: center;
+  text-transform: uppercase;
+  min-width: 49%;
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  font-size: 18px;
+}
+
+.cartBannerButton:hover {
+  background-color: transparent;
+  box-shadow: 0 0 5px #aeaeae;
+}
+
+.cartBannerButton.left {
+  border: 2px solid #3d4579;
+  margin-right: 15px;
+}
+
+.cartBannerButton.right {
+  border: 2px solid #f0f2fd;
+  background-color: #f0f2fd;
+  color: #3d4579;
+  margin-left: 15px;
+  position: relative;
+}
+
+.cartContainer .medicineCard {
+  border-bottom: solid 1px #e3e4ea;
+}
+
+.cartContainer .medicineCard:hover {
+  border: solid 1px #8a96cb;
+}
+
+.bestValueText {
+  color: #ffffff;
+  background-color: #4ccbb6;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  font-size: 12px;
+  padding: 5px 15px;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  font-weight: 100;
+  letter-spacing: 5px;
+}
+
+.saveAmount {
+  color: #4ccbb6;
+  font-size: 12px;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.cartItemListContainer {
+  min-height: 60px;
+  background-color: #ffffff;
+}
