@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-
+import { Button } from 'react-bootstrap';
 
 const Counter = ({
   increment, incrementIfOdd, incrementAsync, decrement, counter,
@@ -7,11 +7,11 @@ const Counter = ({
   <p>
     Clicked: {counter} times
     {' '}
-    <button onClick={increment}>+</button>
+    <Button bsClass="btn btn-primary" onClick={increment}>+</Button>
     {' '}
-    <button onClick={decrement}>-</button>
+    <Button onClick={decrement}>-</Button>
     {' '}
-    <button onClick={incrementIfOdd}>Increment if odd</button>
+    <Button onClick={incrementIfOdd}>Increment if odd</Button>
     {' '}
     <button onClick={() => incrementAsync()}>Increment async</button>
   </p>
