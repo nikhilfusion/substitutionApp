@@ -15,7 +15,7 @@ class Header extends Component {
   render() {
     return (
       <div className="headerContainer">
-        <div className="ribbon">
+        <div className="ribbon hidden-sm hidden-xs">
           <div className="container">
             <div className="nav-pill">What is BDV?</div>
             <div className="nav-pill">Why BDV?</div>
