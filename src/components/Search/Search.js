@@ -15,7 +15,7 @@ class Search extends Component {
   render() {
     return (
       <div className="searchPageContainer">
-        <SearchResultList />
+        <SearchResultList medicines={[]} />
       </div>
     );
   }

@@ -7,7 +7,7 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 const config = require('./webpack.config.dev');
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 const app = express();
 const compiler = webpack(config);
