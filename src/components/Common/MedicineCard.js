@@ -1,37 +1,35 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import './MedicineCard.css';
 
-const MedicineCard = (
-  { medicineName, packForm, packSize, manufacturer, isRxRequired, quantity, price, substitutes }) => (
-    <div className="medicineCardContainer">
-      <h2>{medicineName}</h2>
-      <div>{packForm} | {packSize}</div>
-      <div>{manufacturer}</div>
-      <div className="priceRxContainer">
-        <div>
-          {isRxRequired && <span>Prescription Required</span>}
-        </div>
-        <div className="priceContainer">Rs. {price}</div>
-      </div>
-      <div className="quantityContainer">
-        <div className="subsBannerContainer">
-          <span className="subsBanner">Save upto x% more, explore available substitutes</span>
-          <span className="subsCount">{substitutes.length} substitutes</span>
-        </div>
-        <div>Quantity: {quantity}</div>
-      </div>
-    </div>
-);
+class MedicineCard extends Component { 
+  render(){
+  	const { medicineName, formFactor, packSize, manufacturer, isRxRequired, quantity, price, substitutes, quantityPerFormFactor } = this.props.medName;
+  	return (
+	    <div className="medicineCardContainer">
+	      <h2>{medicineName}</h2>
+	      <div>{quantityPerFormFactor}</div>
+	      <div>{formFactor} | {packSize}</div>
+	      <div>{`by ${manufacturer}`}</div>
+	      <div className="priceRxContainer">
+	        <div>
+	          {isRxRequired && <span>Prescription Required</span>}
+	        </div>
+	        <div className="priceContainer">Rs. {price}</div>
+	      </div>
+	      <div className="quantityContainer">
+	        <div className="subsBannerContainer">
+	          <span className="subsBanner">Save upto x% more, explore available substitutes</span>
+	          <span className="subsCount">{substitutes.length} substitutes</span>
+	        </div>
+	        <div>Quantity: {quantity}</div>
+	      </div>
+	    </div>
+	  );
+	}
+}
 
 MedicineCard.propTypes = {
-  medicineName: PropTypes.string.isRequired,
-  packForm: PropTypes.string.isRequired,
-  packSize: PropTypes.string.isRequired,
-  manufacturer: PropTypes.string.isRequired,
-  isRxRequired: PropTypes.bool.isRequired,
-  quantity: PropTypes.number.isRequired,
-  price: PropTypes.number.isRequired,
-  substitutes: PropTypes.array.isRequired,
+  medName: PropTypes.object
 };
 
 export default MedicineCard;
