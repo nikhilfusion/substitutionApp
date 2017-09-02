@@ -105,3 +105,81 @@
 .cartItemList {
   width: 100%;
 }
+
+.cartFooter {
+  width: 100%;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  padding: 15px;
+}
+
+.cartFooter .totalAmount{
+  font-size: 18px;
+}
+
+.cartFooter.userCart {
+  background-color: #465083;
+}
+
+.cartFooter.bdvCart {
+  background-color: #5cd1be;
+}
+
+.cartFooter .proceedButton {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffffff;
+  background-color: rgba(0,0,0,0.2);
+  padding: 5px 30px;
+  color: #ffffff;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 800px){
+  .cartContainer {
+    padding: 0;
+  }
+
+  .cartWrapper {
+    width: 100%;
+  }
+
+  .cartTitle {
+    padding: 5px 15px;
+    font-size: 18px;
+  }
+
+  .cartSubHeading {
+    padding: 0;
+    font-size: 12px;
+  }
+
+  .cartBannerButton {
+    padding: 5px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .bestValueText {
+    font-size: 10px;
+    letter-spacing: 1px;
+    position: absolute;
+    top: -50%;
+    padding: 5px;
+  }
+
+  .saveAmount {
+    font-size: 10px;
+  }
+
+  .cartFooter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    width: 100vw;
+  }
+}

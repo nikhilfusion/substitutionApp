@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router';
 import CartItemList from '../../components/Cart/CartItemList';
 import BdvItemList from '../../components/Cart/BdvItemList';
 import './Cart.css';
@@ -21,7 +22,7 @@ class Cart extends Component {
           price: 123,
         },
       ],
-      cartTotal: 123,
+      cartTotal: 456,
       bdvItems: [],
       bdvTotal: 123,
     };
@@ -50,6 +51,13 @@ class Cart extends Component {
             <div className="cartItemListContainer">
               {!showBDV && <CartItemList items={cartItems} />}
               {showBDV && <BdvItemList items={bdvItems} />}
+            </div>
+            <div className={`cartFooter ${showBDV ? 'bdvCart' : 'userCart' }`}>
+              <div>
+                <h6 className="amountContainer">Total Amount</h6>
+                <div className="totalAmount">Rs. {showBDV ? bdvTotal : cartTotal}</div>
+              </div>
+              <Link className="proceedButton" to="/">Proceed</Link>
             </div>
           </div>
         </div>
