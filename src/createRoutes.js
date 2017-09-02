@@ -6,6 +6,7 @@ import * as containers from './containers';
 import Homepage from './containers/Homepage/Homepage';
 import Cart from './containers/Cart/Cart';
 import ComparePage from './containers/ComparePage/ComparePage';
+import Partners from './containers/Partners/Partners';
 
 
 const {
@@ -23,6 +24,7 @@ const createRoutes = store => ( // eslint-disable-line no-unused-vars
     <Route path="/" component={Homepage} />
     <Route path="/compare/:primaryMedicineId" component={ComparePage} />
     <Route path="/cart" component={Cart} />
+    <Route path="/partners" component={Partners} />
     <Route path="/test-counter" component={CounterPage} />
     <Route path="*" component={NotFoundPage} />
   </Route>

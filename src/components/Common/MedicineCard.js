@@ -1,9 +1,20 @@
 import React, { PropTypes } from 'react';
-import './MedicineCard.css';
 import { Link } from 'react-router';
+import './MedicineCard.css';
 
-const MedicineCard = ({medName}) => {
-	const { medicineId, medicineName, formFactor, packSize, manufacturer, isRxRequired, quantity, price, substitutes, quantityPerFormFactor } = medName;
+const MedicineCard = ({ medName }) => {
+  const {
+    medicineId,
+    medicineName,
+    formFactor,
+    packSize,
+    manufacturer,
+    isRxRequired,
+    quantity,
+    price,
+    substitutes,
+    quantityPerFormFactor
+  } = medName;
   const compareLink = `/compare/${medicineId}`;
   return (
     <div className="medicineCardContainer">
@@ -20,18 +31,18 @@ const MedicineCard = ({medName}) => {
       <div className="quantityContainer">
         <div className="subsBannerContainer">
           <span className="subsBanner">Save upto x% more, explore available substitutes</span>
-        	<Link className="subsCount" to={compareLink}>{substitutes.length} substitutes</Link>
+          <Link className="subsCount" to={compareLink}>{substitutes.length} substitutes</Link>
         </div>
         <div>Quantity: {quantity}</div>
       </div>
     </div>
   );
-}
+};
 
 MedicineCard.propTypes = {
   medName: PropTypes.object
 };
 MedicineCard.defaultProps = {
-	medName: {}
+  medName: {}
 };
 export default MedicineCard;

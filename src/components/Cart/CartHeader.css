@@ -1,0 +1,56 @@
+.cartHeaderContainer {
+  background-color: #ffffff;
+}
+
+.cartStateContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  max-height: 100px;
+}
+
+.cartState {
+  width: 100%;
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+  text-align: center;
+  position: relative;
+  background-color: #f7f8ff;
+  font-size: 24px;
+  color: #8791c6;
+}
+
+.cartState.active {
+  background-color: #3d4579;
+  color: #ffffff;
+}
+
+.cartStateNumber {
+  position: absolute;
+  font-size: 30px;
+  line-height: 2;
+  top: 0;
+  left: 15px;
+}
+
+.cartState.active .cartStateNumber {
+  color: #707aad;
+}
+
+.cartStateTitle {
+  width: 100%;
+  text-align: center
+}
+
+@media screen and (max-width: 800px){
+  .cartState {
+    font-size: 14px;
+  }
+
+  .cartStateNumber {
+    font-size: 24px;
+  }
+}
