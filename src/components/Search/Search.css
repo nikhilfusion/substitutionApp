@@ -1,0 +1,12 @@
+.searchResultContainer {
+  border: 1px solid pink;
+}
+
+.listTitle {
+  font-size: 12px;
+}
+
+.listContainer {
+  background-color: red;
+  padding: 5px;
+}

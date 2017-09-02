@@ -3,6 +3,7 @@ import { Route } from 'react-router';
 
 import App from './containers/App';
 import * as containers from './containers';
+import Homepage from './containers/Homepage/Homepage';
 
 
 const {
@@ -16,7 +17,8 @@ const {
  **/
 const createRoutes = store => ( // eslint-disable-line no-unused-vars
   <Route component={App}>
-    <Route path="/" component={CounterPage} />
+    <Route path="/" component={Homepage} />
+    <Route path="/test-counter" component={CounterPage} />
     <Route path="*" component={NotFoundPage} />
   </Route>
 );

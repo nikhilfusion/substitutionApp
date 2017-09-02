@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 
 const Main = ({ children }) => (
-  <div>
+  <div className="layoutContainer">
     {/* this will render the child routes */}
     {children}
   </div>
