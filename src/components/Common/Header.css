@@ -21,6 +21,23 @@
 
 .siteTitle {
   font-size: 32px;
+  margin: 0;
+  padding: 15px;
+}
+
+.homeButton {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  padding: 5px;
+  color: #ffffff;
+  font-size: 12px;
+  border: 1px solid #ffffff;
+  overflow: hidden;
+}
+
+.homeButton:visited {
+  color: #ffffff;
 }
 
 @media screen and (max-width: 800px) {

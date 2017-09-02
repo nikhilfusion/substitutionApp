@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+import { Glyphicon } from 'react-bootstrap';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import './Header.css';
 
@@ -25,7 +27,12 @@ class Header extends Component {
           </div>
         </div>
         <div className="container">
-          <h1 className="siteTitle">BEST DRUG VALUE</h1>
+          <h1 className="siteTitle">
+            <Link className="homeButton visible-sm visible-xs" to="/">
+              <Glyphicon glyph="home" />
+            </Link>
+            BEST DRUG VALUE
+          </h1>
           <div className="pincodeContainer hidden-xs hidden-sm">Pincode here {this.state.selectedPincode}</div>
           <div className="searchContainer">
             <SearchBar />
