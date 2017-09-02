@@ -1,0 +1,20 @@
+.ribbon {
+  background-color: rgba(0,0,0,0.2);
+}
+
+.ribbon .container {
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.nav-pill {
+  background-color: transparent;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.nav-pill:hover {
+  background-color: rgba(255,255,255, 0.1);
+}
