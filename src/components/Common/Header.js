@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import './Header.css';
 
 class Header extends Component {
 
@@ -14,8 +15,16 @@ class Header extends Component {
   render() {
     return (
       <div className="headerContainer">
+        <div className="ribbon">
+          <div className="container">
+            <div className="nav-pill">What is BDV?</div>
+            <div className="nav-pill">Why BDV?</div>
+            <div className="nav-pill">How it works?</div>
+            <div className="nav-pill">Benefits</div>
+            <div className="nav-pill">Download App</div>
+          </div>
+        </div>
         <div className="container">
-          <div className="ribbon">Ribbon container</div>
           <h1>BEST DRUG VALUE</h1>
           <div className="pincodeContainer">Pincode here {this.state.selectedPincode}</div>
           <div className="searchContainer">

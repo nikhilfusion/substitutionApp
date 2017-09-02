@@ -3,6 +3,29 @@ import TopSellingList from '../../components/Homepage/TopSellingList';
 import SearchResultList from '../../components/Search/Search';
 import './Homepage.css';
 
+const mockMedicines = [
+  {
+    medicineName: 'Crocin',
+    manufacturer: 'Cipla Ltd',
+    packForm: 'tablet',
+    packSize: '10 tables in a Strip',
+    quantity: 0,
+    isRxRequired: false,
+    price: 240,
+    substitutes: [],
+  },
+  {
+    medicineName: 'Disprin',
+    manufacturer: 'GSK Pharma',
+    packForm: 'capsule',
+    packSize: '10 Capsule in a Strip',
+    quantity: 0,
+    isRxRequired: true,
+    price: 140,
+    substitutes: [{}, {}, {}],
+  },
+];
+
 class Homepage extends Component {
   constructor(props) {
     super(props);
@@ -16,8 +39,8 @@ class Homepage extends Component {
     return (
       <div className="homePageContainer">
         <div className="container">
-          {!isSearchInitiated && <TopSellingList medicines={[]} />}
-          {isSearchInitiated && <SearchResultList medicines={[]} />}
+          {!isSearchInitiated && <TopSellingList medicines={mockMedicines} />}
+          {isSearchInitiated && <SearchResultList medicines={mockMedicines} />}
         </div>
       </div>
     );
