@@ -10,7 +10,17 @@ class Cart extends Component {
 
     this.state = {
       showBDV: false,
-      cartItems: [],
+      cartItems: [
+        { medicineId: '12345',
+          medicineName: 'Crocin',
+          manufacturer: 'Cipla Ltd',
+          packForm: 'tablet',
+          packSize: '10 tablets in a Strip',
+          isRxRequired: false,
+          quantity: 2,
+          price: 123,
+        },
+      ],
       cartTotal: 123,
       bdvItems: [],
       bdvTotal: 123,
