@@ -5,6 +5,7 @@ import './Homepage.css';
 
 const mockMedicines = [
   {
+    medicineId: '12345',
     medicineName: 'Crocin',
     manufacturer: 'Cipla Ltd',
     packForm: 'tablet',
@@ -15,6 +16,7 @@ const mockMedicines = [
     substitutes: [],
   },
   {
+    medicineId: '67890',
     medicineName: 'Disprin',
     manufacturer: 'GSK Pharma',
     packForm: 'capsule',

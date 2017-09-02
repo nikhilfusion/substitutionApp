@@ -1,8 +1,11 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import './MedicineCard.css';
 
 const MedicineCard = (
-  { medicineName, packForm, packSize, manufacturer, isRxRequired, quantity, price, substitutes }) => (
+  { medicineId, medicineName, packForm, packSize, manufacturer, isRxRequired, quantity, price, substitutes }) => {
+  const compareLink = `/compare/${medicineId}`;
+  return (
     <div className="medicineCardContainer">
       <h2>{medicineName}</h2>
       <div>{packForm} | {packSize}</div>
@@ -16,14 +19,16 @@ const MedicineCard = (
       <div className="quantityContainer">
         <div className="subsBannerContainer">
           <span className="subsBanner">Save upto x% more, explore available substitutes</span>
-          <span className="subsCount">{substitutes.length} substitutes</span>
+          <Link className="subsCount" to={compareLink}>{substitutes.length} substitutes</Link>
         </div>
         <div>Quantity: {quantity}</div>
       </div>
     </div>
-);
+  );
+};
 
 MedicineCard.propTypes = {
+  medicineId: PropTypes.string.isRequired,
   medicineName: PropTypes.string.isRequired,
   packForm: PropTypes.string.isRequired,
   packSize: PropTypes.string.isRequired,
