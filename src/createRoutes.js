@@ -1,9 +1,11 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 
 import App from './containers/App';
 import * as containers from './containers';
 import Homepage from './containers/Homepage/Homepage';
+import Cart from './containers/Cart/Cart';
+import ComparePage from './containers/ComparePage/ComparePage';
 
 
 const {
@@ -17,7 +19,10 @@ const {
  **/
 const createRoutes = store => ( // eslint-disable-line no-unused-vars
   <Route component={App}>
+    <IndexRoute component={Homepage} />
     <Route path="/" component={Homepage} />
+    <Route path="/compare/:primaryMedicineId" component={ComparePage} />
+    <Route path="/cart" component={Cart} />
     <Route path="/test-counter" component={CounterPage} />
     <Route path="*" component={NotFoundPage} />
   </Route>
