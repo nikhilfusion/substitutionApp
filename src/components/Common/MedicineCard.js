@@ -7,11 +7,34 @@ class MedicineCard extends Component {
   constructor(props) {
     super(props);
     this.onChange.bind(this);
+    this.state = {
+      qty: 0,
+      itemId: ''
+    };
   }
 
-  onChange(qty, itemId) {
-    console.log('qty is ', qty);
-    console.log('itemId is ', itemId);
+  onChange(itemId, qty) {
+    const localData = JSON.parse(localStorage.getItem("cartData"));
+    if(localData && localData.length > 0) {
+      const index = localData.findIndex((dt) => {
+        return dt.itemId == itemId
+      })
+      if(index > -1) {
+        this.setState({qty: qty, itemId: itemId});
+      } 
+    }
+  }
+
+  componentWillMount() {
+    const localData = JSON.parse(localStorage.getItem("cartData"));
+    if(localData && localData.length > 0) {
+      const index = localData.findIndex((dt) => {
+        return dt.itemId == this.props.medName._medicineID
+      })
+      if(index > -1) {
+        this.setState({qty: localData[index].quantity, itemId: localData[index].itemId})
+      }
+    }
   }
   render() {
     const { _medicineId, _medicineName, _formFactor, _packSize, _manufacturer, _quantity, _price, _substitute, _quantityPerFormFactor } = this.props.medName;
@@ -34,7 +57,7 @@ class MedicineCard extends Component {
             <Link className="subsCount" to={compareLink}>{_substitute && _substitute.length || 0} substitutes</Link>
           </div>
           <div className="modifyQtyContainer">
-            <UpdateQuantity itemId={_medicineId} quantity={0} onChange= {(qty, itemId) => { this.onChange(qty, itemId) }} />
+            <UpdateQuantity itemId={this.state.itemId || _medicineID} quantity={this.state.qty} onChange= {(qty, itemId) => { this.onChange(qty, itemId) }} />
           </div>
         </div>
       </div>

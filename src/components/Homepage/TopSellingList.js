@@ -8,7 +8,7 @@ export default class TopSellingList extends Component {
     if(searchText) {
       medicines = medicines.filter(function(medicine){
         let key = Object.keys(medicine)[0];
-        return medicine[key].medicineName.toUpperCase().indexOf(searchText.toUpperCase()) > -1;
+        return medicine[key]._medicineName.toUpperCase().indexOf(searchText.toUpperCase()) > -1;
       });
     }
     return(

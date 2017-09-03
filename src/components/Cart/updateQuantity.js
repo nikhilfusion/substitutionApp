@@ -7,20 +7,32 @@ export default class UpdateQuantity extends Component {
     super(props);
     this.updateQty.bind(this);
     this.state = {
-      quantity: 0,
-      itemId: ''
+      itemId: '',
+      quantity: 0
     }
   }
 
   updateQty(itemId, quantity) {
-    console.log('itemId is ', itemId);
-    console.log('quantity is ', quantity);
+    if(quantity < 0) {
+      quantity = 0;
+    }
+    let localData = JSON.parse(localStorage.getItem("cartData"));
+    if(!localData) {
+      localData = [];
+    }
+    let index = localData.findIndex((dt) => {
+      return dt.itemId === itemId
+    });
+    if(index < 0) {
+      localData.push({itemId: itemId, quantity: quantity});
+    } else {
+      localData[index].quantity = quantity;
+    }
+    localStorage.setItem("cartData", JSON.stringify(localData));
     this.props.onChange(itemId, quantity);
-    this.setstate({ quantity : quantity, itemId: itemId });
   }
   render() {
     const { itemId, quantity } = this.props;
-    console.log('this.props is ', this.props);
     return(
       <div className="qtyContainer">
         <div className="qtyInnerConainer">
