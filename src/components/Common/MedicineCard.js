@@ -29,7 +29,7 @@ export default class MedicineCard extends Component {
     const localData = JSON.parse(localStorage.getItem("cartData"));
     if(localData && localData.length > 0) {
       const index = localData.findIndex((dt) => {
-        return dt.itemId == this.props.medName._medicineID
+        return dt.itemId == this.props.medName._medicineId
       })
       if(index > -1) {
         this.setState({qty: localData[index].quantity, itemId: localData[index].itemId})
@@ -57,7 +57,7 @@ export default class MedicineCard extends Component {
             <Link className="subsCount" to={compareLink}>{_substitute && _substitute.length || 0} substitutes</Link>
           </div>
           <div className="modifyQtyContainer">
-            <UpdateQuantity itemId={this.state.itemId || _medicineID} quantity={this.state.qty} onChange= {(qty, itemId) => { this.onChange(qty, itemId) }} />
+            <UpdateQuantity itemId={this.state.itemId || _medicineId} quantity={this.state.qty} onChange= {(qty, itemId) => { this.onChange(qty, itemId) }} />
           </div>
         </div>
       </div>

@@ -36,9 +36,9 @@ export default class UpdateQuantity extends Component {
     return(
       <div className="qtyContainer">
         <div className="qtyInnerConainer">
-          <button className="btn-update-qty" onClick={() => this.updateQty(this.state.itemId || this.state.quantity - 1 : 0)}>-</button>
+          <button className="btn-update-qty" onClick={() => this.updateQty(itemId, quantity - 1 : 0)}>-</button>
           <div className="quantity">{quantity || 0}</div>
-          <button className="btn-update-qty" onClick={() => this.updateQty(this.state.itemId || itemId, this.state.quantity + 1)}>+</button>
+          <button className="btn-update-qty" onClick={() => this.updateQty(itemId , quantity + 1)}>+</button>
         </div>
       </div>
     );

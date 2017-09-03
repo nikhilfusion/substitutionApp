@@ -49,7 +49,7 @@ class Header extends Component {
           </h1>
           <div className="pincodeContainer hidden-xs hidden-sm">
             <div className="pincodeTitle">Available at</div>
-            {pincodes.map(pincode => <div className="pincodeValue">{pincode}</div>)}
+            {pincodes.map((pincode, key) => <div className="pincodeValue" key={key}>{pincode}</div>)}
           </div>
           <div className="searchContainer">
             <SearchBar onChange= {(val) => { this.onChange(val) }}/>
