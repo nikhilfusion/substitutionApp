@@ -19,7 +19,7 @@ class Homepage extends Component {
   }
 
   componentWillMount() {
-    api.getUser().then((res) => {
+    api.getTopSellerMedicines().then((res) => {
       this.setState({medicines: res})
     })
   }
@@ -30,12 +30,13 @@ class Homepage extends Component {
 
   render() {
     const { isSearchInitiated } = this.state;
+    console.log('this.state.medicines.topSeller is ', this.state.medicines.topSeller);
     return (
       <div className="homePageContainer">
         <Header onChange={(val) => {this.onChange(val)}}/>
         <div className="container">
           {!isSearchInitiated && <TopSellingList medicines={mockMedicines.topSeller} searchText={this.state.searchText}/>}
-          {isSearchInitiated && <SearchResultList medicines={mockMedicines} />}
+          {isSearchInitiated && <SearchResultList medicines={mockMedicines.topSeller} />}
         </div>
       </div>
     );

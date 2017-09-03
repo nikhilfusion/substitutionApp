@@ -3,7 +3,7 @@ import MedicineCard from '../Common/MedicineCard';
 
 export default class TopSellingList extends Component {
   render() {
-    const {searchText } = this.props;
+    const { searchText } = this.props;
     let medicines = this.props.medicines;
     if(searchText) {
       medicines = medicines.filter(function(medicine){
@@ -12,20 +12,21 @@ export default class TopSellingList extends Component {
       });
     }
     return(
-    <div className="topSellingListContainer">
-      <h2 className="listTitle">Top Selling Medicines</h2>
-      <div className="listContainer">
-        {medicines.map((medicine, key) => <MedicineCard key={key} medName={medicine[Object.keys(medicine)[0]]}  />)}
+      <div className="topSellingListContainer">
+        <h2 className="listTitle">Top Selling Medicines</h2>
+        <div className="listContainer">
+          {medicines.map((medicine, key) => <MedicineCard key={key} medName={medicine[Object.keys(medicine)[0]]}  />)}
+        </div>
       </div>
-    </div>
     );
   }
 }
 
 TopSellingList.propTypes = {
-  medicines: PropTypes.array.isRequired,
+  medicines: PropTypes.array,
   searchText: PropTypes.string
 };
 TopSellingList.defaultProps = {
-  searchText:''
+  searchText:'',
+  medicines: []
 };
