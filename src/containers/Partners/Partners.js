@@ -36,13 +36,9 @@ class Partners extends Component {
     };
   }
 
-  setSelectedPartnerId(value) {
-    this.setState({ showBDV: value });
-  }
-
   confirmOrder() {
     if (!this.state.selectedPartnerId) {
-      console.error('no partner selected');
+      alert('No partner selected');
       return false;
     }
     console.log(partners.find(partner => partner.id === this.state.selectedPartnerId));
