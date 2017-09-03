@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { PropTypes } from 'prop-types';
+import { Button } from 'react-bootstrap';
+import { browserHistory, Link } from 'react-router';
 import CartHeader from '../../components/Cart/CartHeader';
 import './Partners.css';
 
@@ -7,20 +9,20 @@ const partners = [
   {
     id: 1,
     name: 'Pharmeasy',
-    extraDiscount: '20%',
-    text: 'Oh Yeah!',
+    discountText: '20% FLAT DISCOUNT',
+    text: '+ 10% for first time users',
   },
   {
     id: 2,
     name: 'Health Saverz',
-    extraDiscount: '10%',
-    text: 'Wah ji Wah!',
+    discountText: '20% FLAT DISCOUNT',
+    text: '+ 10% for first time users',
   },
   {
     id: 3,
     name: 'Airmed',
-    extraDiscount: '15%',
-    text: 'Balle Balle... !',
+    discountText: '20% FLAT DISCOUNT',
+    text: '+ 10% for first time users',
   },
 ];
 
@@ -38,6 +40,16 @@ class Partners extends Component {
     this.setState({ showBDV: value });
   }
 
+  confirmOrder() {
+    if (!this.state.selectedPartnerId) {
+      console.error('no partner selected');
+      return false;
+    }
+    console.log(partners.find(partner => partner.id === this.state.selectedPartnerId));
+    browserHistory.push('/confirm');
+    return true;
+  }
+
   render() {
     const { selectedPartnerId, selectedCartTotal } = this.state;
     return (
@@ -47,15 +59,21 @@ class Partners extends Component {
           <div className="cartWrapper">
             <h2 className="cartTitle">AVAILABLE AT</h2>
             <div className="cartSubHeading">Choose one of the partner sellers to avail more discount</div>
-            <div className="partnerCardContainer">
-              {partners.map(partner => <div key={partner.id}>{partner.name} {selectedPartnerId}</div>)}
+            <div className="partnerCardListContainer">
+              {partners.map(partner =>
+                <PartnerCard
+                  key={partner.id}
+                  {...partner}
+                  isSelected={partner.id === selectedPartnerId}
+                  onSelectClick={id => this.setState({ selectedPartnerId: id })}
+                />)}
             </div>
             <div className="cartFooter">
               <div>
                 <h6 className="amountContainer">Total Amount</h6>
                 <div className="totalAmount">Rs. {selectedCartTotal}</div>
               </div>
-              <Link className="proceedButton" to="/partners">Proceed</Link>
+              <Link className="proceedButton" onClick={() => this.confirmOrder()}>Proceed</Link>
             </div>
           </div>
         </div>
@@ -65,3 +83,34 @@ class Partners extends Component {
 }
 
 export default Partners;
+
+const PartnerCard = ({ id, name, discountText, text, isSelected, onSelectClick }) => (
+  <div className={`partnerCardContainer ${isSelected ? 'selected' : ''}`}>
+    <div className="partnerName">{name}</div>
+    <div>{discountText}</div>
+    <div className="additionalText">{text}</div>
+    <Button
+      className={`selectPartnerButton ${isSelected ? 'selected' : ''}`}
+      onClick={() => onSelectClick(id)}
+      disabled={isSelected}
+    >
+      {isSelected ? 'Selected' : 'Select'}
+    </Button>
+  </div>
+);
+
+PartnerCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  isSelected: PropTypes.bool,
+  onSelectClick: PropTypes.func,
+  text: PropTypes.string,
+  discountText: PropTypes.string,
+};
+
+PartnerCard.defaultProps = {
+  text: '',
+  discountText: '',
+  isSelected: false,
+  onSelectClick: () => console.log('onSelectClick not passed'),
+};
