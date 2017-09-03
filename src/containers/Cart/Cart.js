@@ -10,6 +10,7 @@ class Cart extends Component {
   constructor(props) {
     super(props);
 
+    // cartItems: JSON.parse(localStorage.getItem('cartData')) || [],
     this.state = {
       showBDV: false,
       cartItems: [
@@ -49,6 +50,10 @@ class Cart extends Component {
 
   setShowBdvValue(value) {
     this.setState({ showBDV: value });
+  }
+
+  ComponentDidMount() {
+    console.log();
   }
 
   render() {

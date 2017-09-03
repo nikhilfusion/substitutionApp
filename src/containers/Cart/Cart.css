@@ -1,6 +1,6 @@
 .cartContainer {
   padding: 0;
-  height: 100vh;
+  min-height: 90vh;
 }
 
 .cartTitle {
@@ -65,6 +65,11 @@
   color: #3d4579;
   margin-left: 15px;
   position: relative;
+}
+
+.cartBannerButton.active {
+  box-shadow: none;
+  outline: none;
 }
 
 .cartBannerButton.left.active {

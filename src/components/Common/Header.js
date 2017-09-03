@@ -49,12 +49,16 @@ class Header extends Component {
           </h1>
           <div className="pincodeContainer hidden-xs hidden-sm">
             <div className="pincodeTitle">Available at</div>
-            {pincodes.map((pincode, key) => <div className="pincodeValue" key={key}>{pincode}</div>)}
+            {pincodes.map((pincode, key) => <button className="pincodeValue" key={key}>{pincode}</button>)}
           </div>
           <div className="searchContainer">
             <SearchBar onChange= {(val) => { this.onChange(val) }}/>
           </div>
-          <div className="impactContainer hidden-sm hidden-xs">Impact here</div>
+          <div className="impactContainer hidden-sm hidden-xs">
+            <div className="viewsText">5,353 Views (Today)</div>
+            <div className="savingsText">145,635,494 Total Savings</div>
+            <div className="recommendationsText">1500 Recommendations</div>
+          </div>
         </div>
       </div>
     );
