@@ -4,6 +4,12 @@ import { Glyphicon } from 'react-bootstrap';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import './Header.css';
 
+const pincodes = [
+  '123456',
+  '234567',
+  '456789',
+];
+
 class Header extends Component {
 
   constructor(props) {
@@ -37,9 +43,14 @@ class Header extends Component {
             <Link className="homeButton visible-sm visible-xs" to="/">
               <Glyphicon glyph="home" />
             </Link>
-            BEST DRUG VALUE
+            <span className="bestText">BEST</span>
+            <span className="drugText">DRUG</span>
+            <span className="valueText">VALUE</span>
           </h1>
-          <div className="pincodeContainer hidden-xs hidden-sm">Pincode here {this.state.selectedPincode}</div>
+          <div className="pincodeContainer hidden-xs hidden-sm">
+            <div className="pincodeTitle">Available at</div>
+            {pincodes.map(pincode => <div className="pincodeValue">{pincode}</div>)}
+          </div>
           <div className="searchContainer">
             <SearchBar onChange= {(val) => { this.onChange(val) }}/>
           </div>

@@ -3,7 +3,7 @@ import './MedicineCard.css';
 import { Link } from 'react-router';
 import UpdateQuantity from '../Cart/updateQuantity';
 
-class MedicineCard extends Component {
+export default class MedicineCard extends Component {
   constructor(props) {
     super(props);
     this.onChange.bind(this);
@@ -65,11 +65,9 @@ class MedicineCard extends Component {
   }
 }
 
-export default MedicineCard;
-
 MedicineCard.propTypes = {
   medName: PropTypes.object
 };
 MedicineCard.defaultProps = {
-	medName: {}
+  medName: {}
 };

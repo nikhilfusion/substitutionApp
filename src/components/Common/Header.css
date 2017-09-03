@@ -11,7 +11,7 @@
 
 .nav-pill {
   background-color: transparent;
-  padding: 5px;
+  padding: 5px 15px;
   cursor: pointer;
 }
 
@@ -22,7 +22,22 @@
 .siteTitle {
   font-size: 32px;
   margin: 0;
-  padding: 15px;
+  padding: 30px 15px;
+}
+
+.bestText {
+  color: #f8da5e;
+  padding: 5px;
+}
+
+.drugText {
+  color: #f8da5e;
+  padding: 5px;
+}
+
+.valueText {
+  color: #50e3c2;
+  padding: 5px;
 }
 
 .homeButton {
@@ -38,6 +53,22 @@
 
 .homeButton:visited {
   color: #ffffff;
+}
+
+.pincodeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pincodeTitle {
+  margin: 0 5px;
+}
+
+.pincodeValue {
+  border: 0.5px solid #ffffff;
+  padding: 5px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 800px) {

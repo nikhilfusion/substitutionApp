@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react';
+import './CartItem.css';
 
 const CartItem = ({ medicineId, medicineName, manufacturer, packForm, packSize, isRxRequired, quantity, price }) => (
   <div className="cartItemContainer">
-    <div>{medicineName}</div>
+    <div>{medicineId} - {medicineName}</div>
     <div>{packForm} | {packSize}</div>
     <div>{manufacturer}</div>
     <div>{isRxRequired}</div>
-    <div>{quantity}</div>
-    <div>{price}</div>
-    <div>Subtotal{medicineId}</div>
+    <div>{quantity} x Rs. {price}</div>
+    <div>Rs. {Number(quantity) * Number(price)}</div>
   </div>
 );
 
