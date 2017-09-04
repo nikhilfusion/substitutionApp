@@ -41,7 +41,9 @@ class Partners extends Component {
       alert('No partner selected');
       return false;
     }
-    console.log(partners.find(partner => partner.id === this.state.selectedPartnerId));
+    const selectedPartner = partners.find(partner => partner.id === this.state.selectedPartnerId);
+    console.log(JSON.stringify(selectedPartner));
+    localStorage.setItem('selectedPartner', JSON.stringify(selectedPartner));
     browserHistory.push('/confirm');
     return true;
   }
