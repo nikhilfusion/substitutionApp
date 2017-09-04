@@ -7,7 +7,7 @@ import Homepage from './containers/Homepage/Homepage';
 import Cart from './containers/Cart/Cart';
 import ComparePage from './containers/ComparePage/ComparePage';
 import Partners from './containers/Partners/Partners';
-
+import OrderSuccess from './containers/OrderSuccess/OrderSuccess';
 
 const {
   CounterPage,
@@ -25,6 +25,7 @@ const createRoutes = store => ( // eslint-disable-line no-unused-vars
     <Route path="/compare/:primaryMedicineId" component={ComparePage} />
     <Route path="/cart" component={Cart} />
     <Route path="/partners" component={Partners} />
+    <Route path="/confirm" component={OrderSuccess} />
     <Route path="/test-counter" component={CounterPage} />
     <Route path="*" component={NotFoundPage} />
   </Route>

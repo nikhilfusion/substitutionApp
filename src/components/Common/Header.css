@@ -1,6 +1,11 @@
+.headerContainer {
+  background-color: #353b6f;
+  color: #ffffff;
+  text-align: center;
+}
+
 .ribbon {
   background-color: rgba(0,0,0,0.2);
-
 }
 
 .ribbon .container {
@@ -20,7 +25,7 @@
 }
 
 .siteTitle {
-  font-size: 32px;
+  font-size: 40px;
   margin: 0;
   padding: 30px 15px;
 }
@@ -62,13 +67,55 @@
 }
 .pincodeTitle {
   margin: 0 5px;
+  color: #a0a5d0;
+  font-size: 12px;
 }
 
 .pincodeValue {
-  border: 0.5px solid #ffffff;
+  background-color: transparent;
+  border: 0.5px solid #a0a5d0;
   padding: 5px 15px;
   margin: 0 5px;
   border-radius: 5px;
+  cursor: pointer;
+  color: #a0a5d0;
+  font-size: 12px;
+}
+
+.pincodeValue.active, .pincodeValue:active {
+  outline: none;
+}
+
+.pincodeValue:hover {
+  border: 0.5px solid #f8de71;
+}
+
+.pincodeValue.selected {
+  border: 0.5px solid #f8de71;
+  color: #725e0c;
+  background-color: #f8de71;
+}
+
+.impactContainer {
+  padding: 15px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.viewsText {
+  color: #fcdd6a;
+  padding: 0 15px;
+}
+
+.savingsText {
+  color: #4ccbb6;
+  padding: 0 15px;
+}
+
+.recommendationsText {
+  color: #a0a5d0;
+  padding: 0 15px;
 }
 
 @media screen and (max-width: 800px) {
