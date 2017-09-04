@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
+import CartItem from './CartItem';
 
 const BdvItemList = ({ items }) => (
   <div className="bdvItemList">
     BDV Item List
-    {items.map(item => <div>THis the the item {item}</div>)}
+    {items.map((item, key) => <CartItem {...item[Object.keys(item)[0]]} key={key} />)}
   </div>
 );
 

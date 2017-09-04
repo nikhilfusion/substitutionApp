@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import CartHeader from '../../components/Cart/CartHeader';
 import CartItemList from '../../components/Cart/CartItemList';
 import BdvItemList from '../../components/Cart/BdvItemList';
+import api from '../../api/api';
 import './Cart.css';
 
 class Cart extends Component {
@@ -13,39 +14,47 @@ class Cart extends Component {
     // cartItems: JSON.parse(localStorage.getItem('cartData')) || [],
     this.state = {
       showBDV: false,
-      cartItems: [
-        { medicineId: '12345',
-          medicineName: 'Crocin',
-          manufacturer: 'Cipla Ltd',
-          packForm: 'tablet',
-          packSize: '10 tablets in a Strip',
-          isRxRequired: false,
-          quantity: 2,
-          price: 123,
-        },
-        { medicineId: '12345',
-          medicineName: 'Crocin',
-          manufacturer: 'Cipla Ltd',
-          packForm: 'tablet',
-          packSize: '10 tablets in a Strip',
-          isRxRequired: false,
-          quantity: 2,
-          price: 123,
-        },
-        { medicineId: '12345',
-          medicineName: 'Crocin',
-          manufacturer: 'Cipla Ltd',
-          packForm: 'tablet',
-          packSize: '10 tablets in a Strip',
-          isRxRequired: false,
-          quantity: 2,
-          price: 123,
-        },
-      ],
+      // cartItems: [
+      //   { medicineId: '12345',
+      //     medicineName: 'Crocin',
+      //     manufacturer: 'Cipla Ltd',
+      //     packForm: 'tablet',
+      //     packSize: '10 tablets in a Strip',
+      //     isRxRequired: false,
+      //     quantity: 2,
+      //     price: 123,
+      //   },
+      //   { medicineId: '12345',
+      //     medicineName: 'Crocin',
+      //     manufacturer: 'Cipla Ltd',
+      //     packForm: 'tablet',
+      //     packSize: '10 tablets in a Strip',
+      //     isRxRequired: false,
+      //     quantity: 2,
+      //     price: 123,
+      //   },
+      //   { medicineId: '12345',
+      //     medicineName: 'Crocin',
+      //     manufacturer: 'Cipla Ltd',
+      //     packForm: 'tablet',
+      //     packSize: '10 tablets in a Strip',
+      //     isRxRequired: false,
+      //     quantity: 2,
+      //     price: 123,
+      //   },
+      // ],
       cartTotal: 456,
       bdvItems: [],
+      cartItems: [],
       bdvTotal: 123,
     };
+  }
+
+  componentWillMount() {
+    api.getCart().then((cartItems) => {
+      const result = JSON.parse(cartItems.result);
+      this.setState({bdvItems: result.recommendedCart, cartItems: result.currentCart})
+    })
   }
 
   setShowBdvValue(value) {
@@ -58,6 +67,8 @@ class Cart extends Component {
 
   render() {
     const { cartTotal, bdvTotal, showBDV, cartItems, bdvItems } = this.state;
+    console.log('cartItems is ', cartItems);
+    console.log('bdvItems is ', bdvItems);
     return (
       <div className="cartContainer">
         <CartHeader activeState={1} />
