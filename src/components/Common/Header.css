@@ -28,6 +28,7 @@
   font-size: 40px;
   margin: 0;
   padding: 30px 15px;
+  position: relative;
 }
 
 .bestText {
@@ -46,7 +47,10 @@
 }
 
 .homeButton {
+  display: inline-block;
   position: absolute;
+  width: 25px;
+  height: 25px;
   left: 15px;
   top: 15px;
   padding: 5px;
@@ -56,8 +60,22 @@
   overflow: hidden;
 }
 
-.homeButton:visited {
+.homeButton:visited, .cartButton:visited {
   color: #ffffff;
+}
+
+.cartButton {
+  display: inline-block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: 15px;
+  top: 15px;
+  padding: 5px;
+  color: #ffffff;
+  font-size: 12px;
+  border: 1px solid #ffffff;
+  overflow: hidden;
 }
 
 .pincodeContainer {

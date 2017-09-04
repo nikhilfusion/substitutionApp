@@ -40,8 +40,11 @@ class Header extends Component {
         </div>
         <div className="container">
           <h1 className="siteTitle">
-            <Link className="homeButton visible-sm visible-xs" to="/">
+            <Link className="homeButton" to="/">
               <Glyphicon glyph="home" />
+            </Link>
+            <Link className="cartButton" to="/cart">
+              <Glyphicon glyph="shopping-cart" />
             </Link>
             <span className="bestText">BEST</span>
             <span className="drugText">DRUG</span>
