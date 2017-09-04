@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Glyphicon } from 'react-bootstrap';
+import { browserHistory } from 'react-router'; 
 import SearchBar from '../../components/SearchBar/SearchBar';
 import './Header.css';
 
 const pincodes = [
-  '123456',
-  '234567',
-  '456789',
+  {place: 'Kurla', pincode: '400070'},
+  {place: 'Powai', pincode: '400076'},
+  {place: 'Ambernath', pincode: '421501'},
 ];
 
 class Header extends Component {
@@ -15,9 +16,10 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
+    this.changePin = this.changePin.bind(this);
     this.state = {
-      selectedPincode: '444444',
-      searchText: ''
+      searchText: '',
+      selectedPin: ''
     };
   }
 
@@ -26,7 +28,14 @@ class Header extends Component {
     this.props.onChange(value);
   }
 
+  changePin(pincode) {
+    browserHistory.push(`/${pincode}`);
+    this.props.onChange(undefined, pincode);
+    this.setState({selectedPin: pincode});
+  }
+
   render() {
+    const pincode = this.props.pincode;
     return (
       <div className="headerContainer">
         <div className="ribbon hidden-sm hidden-xs">
@@ -52,7 +61,7 @@ class Header extends Component {
           </h1>
           <div className="pincodeContainer hidden-xs hidden-sm">
             <div className="pincodeTitle">Available at</div>
-            {pincodes.map((pincode, key) => <button className="pincodeValue" key={key}>{pincode}</button>)}
+            {pincodes.map((pin, key) => <button className={"pincodeValue" + (pincode == pin.pincode ? ' selected' : '')} key={key} onClick={() => { this.changePin(pin.pincode)}}>{`${pin.pincode}(${pin.place})`}</button>)}
           </div>
           <div className="searchContainer">
             <SearchBar onChange= {(val) => { this.onChange(val) }}/>

@@ -10,7 +10,6 @@ class Homepage extends Component {
     super(props);
     this.state = {
       isSearchInitiated: false,
-      selectedPincode: '444444',
       medicines: [],
       searchText: ''
     };
@@ -18,22 +17,31 @@ class Homepage extends Component {
   }
 
   componentWillMount() {
-    api.getTopSellerMedicines().then((res) => {
+    const pincode = this.props.params.pincode || 400070;
+    api.getTopSellerMedicines(pincode).then((res) => {
       this.setState({medicines: res})
     })
   }
 
-  onChange(val) {
-    this.setState({'searchText': val})
+  onChange(val, pincode) {
+    if(pincode) {
+      api.getTopSellerMedicines(pincode).then((res) => {
+        this.setState({medicines: res})
+      });
+    } else {
+      this.setState({'searchText': val});
+    }
   }
+
 
   render() {
     const { isSearchInitiated } = this.state;
+    const pincode = this.props.params.pincode || 400070;
     return (
       <div className="homePageContainer">
-        <Header onChange={(val) => {this.onChange(val)}}/>
+        <Header onChange={(val, pincode) => {this.onChange(val, pincode)}} pincode={pincode}/>
         <div className="container">
-          {!isSearchInitiated && <TopSellingList medicines={this.state.medicines.topSeller} searchText={this.state.searchText}/>}
+          {!isSearchInitiated && <TopSellingList medicines={this.state.medicines.topSeller} searchText={this.state.searchText} />}
           {isSearchInitiated && <SearchResultList medicines={this.state.medicines.topSeller} />}
         </div>
       </div>

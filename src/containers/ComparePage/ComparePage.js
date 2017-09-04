@@ -10,7 +10,6 @@ class ComparePage extends Component {
     super(props);
 
     this.state = {
-      primaryMedicineId: '12345',
       substitutes: [],
       medicineName: ''
     };
@@ -20,7 +19,6 @@ class ComparePage extends Component {
     api.getTopSellerMedicines().then((medicines) => {
       medicines.topSeller.forEach((seller) => {
         if(seller[Object.keys(seller)[0]]._medicineId == this.props.params.primaryMedicineId) {
-          console.log('seller[Object.keys(seller)[0]]')
           this.setState({substitutes: seller[Object.keys(seller)[0]]._substitute, medicineName: seller[Object.keys(seller)[0]]._medicineName});
         }
       })

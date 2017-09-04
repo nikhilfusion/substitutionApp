@@ -1,8 +1,8 @@
 import axios from 'axios';
 export default class api {
-	static getTopSellerMedicines() {
+	static getTopSellerMedicines(pincode) {
 		return new Promise((resolve, reject) => {
-      axios.get('http://substitutes.pharmeasy.in:3000/api/getTopSellerMedicines')
+      axios.get('http://substitutes.pharmeasy.in:3000/api/getTopSellerMedicines?zipcode=' + pincode)
       .then((result) => {
         resolve(result.data);
       })
