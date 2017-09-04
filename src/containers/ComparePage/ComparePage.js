@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { Glyphicon } from 'react-bootstrap';
 import MedicineCard from '../../components/Common/MedicineCard';
 import './ComparePage.css';
+import api from '../../api/api';
 
 class ComparePage extends Component {
   constructor(props) {
@@ -10,11 +11,21 @@ class ComparePage extends Component {
 
     this.state = {
       primaryMedicineId: '12345',
-      medicines: localStorage.getItem('medicines') || [],
+      substitutes: [],
     };
   }
+
+  componentWillMount() {
+    api.getTopSellerMedicines().then((medicines) => {
+      medicines.topSeller.forEach((seller) => {
+        if(seller[Object.keys(seller)[0]]._medicineId == this.props.params.primaryMedicineId) {
+          this.setState({substitutes: seller[Object.keys(seller)[0]]._substitute});
+        }
+      })
+    })
+  }
   render() {
-    const substitutes = [];
+    const { substitutes } = this.state;
     return (
       <div className="comparePageContainer">
         <div className="comparePageHeader">
@@ -29,7 +40,7 @@ class ComparePage extends Component {
           </div>
         </div>
         <div className="substituteListContainer">
-          {substitutes.map(subs => <MedicineCard medName={subs} />)}
+          {substitutes.map((subs, key) => <MedicineCard medName={subs} isSubsBanner={true} key={key}/>)}
         </div>
       </div>
     );

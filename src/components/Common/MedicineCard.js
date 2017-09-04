@@ -54,10 +54,11 @@ export default class MedicineCard extends Component {
         <div className="quantityContainer">
           <div className="subsBannerContainer">
             <span className="subsBanner">Save upto x% more, explore available substitutes</span>
-            <Link className="subsCount" to={compareLink}>{_substitute && _substitute.length || 0} substitutes</Link>
+            {!this.props.isSubsBanner &&
+              <Link className="subsCount" to={compareLink}>{_substitute && _substitute.length || 0} substitutes</Link>}
           </div>
           <div className="modifyQtyContainer">
-            <UpdateQuantity itemId={this.state.itemId || _medicineId} quantity={this.state.qty} onChange= {(qty, itemId) => { this.onChange(qty, itemId) }} />
+            <UpdateQuantity itemId={Number(this.state.itemId || _medicineId)} quantity={this.state.qty} onChange= {(qty, itemId) => { this.onChange(qty, itemId) }} />
           </div>
         </div>
       </div>
@@ -66,8 +67,10 @@ export default class MedicineCard extends Component {
 }
 
 MedicineCard.propTypes = {
-  medName: PropTypes.object
+  medName: PropTypes.object,
+  isSubsBanner: PropTypes.bool
 };
 MedicineCard.defaultProps = {
-  medName: {}
+  medName: {},
+  isSubsBanner: false
 };
