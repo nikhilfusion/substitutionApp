@@ -10,50 +10,42 @@ import './Cart.css';
 class Cart extends Component {
   constructor(props) {
     super(props);
-
-    // cartItems: JSON.parse(localStorage.getItem('cartData')) || [],
     this.state = {
       showBDV: false,
-      // cartItems: [
-      //   { medicineId: '12345',
-      //     medicineName: 'Crocin',
-      //     manufacturer: 'Cipla Ltd',
-      //     packForm: 'tablet',
-      //     packSize: '10 tablets in a Strip',
-      //     isRxRequired: false,
-      //     quantity: 2,
-      //     price: 123,
-      //   },
-      //   { medicineId: '12345',
-      //     medicineName: 'Crocin',
-      //     manufacturer: 'Cipla Ltd',
-      //     packForm: 'tablet',
-      //     packSize: '10 tablets in a Strip',
-      //     isRxRequired: false,
-      //     quantity: 2,
-      //     price: 123,
-      //   },
-      //   { medicineId: '12345',
-      //     medicineName: 'Crocin',
-      //     manufacturer: 'Cipla Ltd',
-      //     packForm: 'tablet',
-      //     packSize: '10 tablets in a Strip',
-      //     isRxRequired: false,
-      //     quantity: 2,
-      //     price: 123,
-      //   },
-      // ],
-      cartTotal: 456,
+      cartTotal: '',
       bdvItems: [],
       cartItems: [],
-      bdvTotal: 123,
+      bdvTotal: '',
     };
   }
 
   componentWillMount() {
     api.getCart().then((cartItems) => {
       const result = JSON.parse(cartItems.result);
-      this.setState({bdvItems: result.recommendedCart, cartItems: result.currentCart})
+      let cartTotal = 0;
+      let bdvTotal = 0;
+      const recommendedCart = result.recommendedCart;
+      const currentCart = result.currentCart;
+      this.setState({bdvItems: recommendedCart, cartItems: currentCart});
+      const localData = JSON.parse(localStorage.getItem("cartData"));
+      recommendedCart.forEach((cart) => {
+        const index = localData.findIndex((dt) => {
+          return dt.itemId == cart[Object.keys(cart)[0]]._medicineId
+        })
+        const quantity = index < 0 ? 1 : localData[index].quantity;
+        bdvTotal += quantity * cart[Object.keys(cart)[0]]._price;
+        this.setState({bdvTotal: bdvTotal});
+      })
+
+      currentCart.forEach((cart) => {
+        const index = localData.findIndex((dt) => {
+          return dt.itemId == cart[Object.keys(cart)[0]]._medicineId
+        })
+        const quantity = index < 0 ? 1 : localData[index].quantity;
+        cartTotal += quantity * cart[Object.keys(cart)[0]]._price;
+        this.setState({cartTotal: cartTotal});
+      })
+
     })
   }
 
@@ -61,14 +53,8 @@ class Cart extends Component {
     this.setState({ showBDV: value });
   }
 
-  ComponentDidMount() {
-    console.log();
-  }
-
   render() {
     const { cartTotal, bdvTotal, showBDV, cartItems, bdvItems } = this.state;
-    console.log('cartItems is ', cartItems);
-    console.log('bdvItems is ', bdvItems);
     return (
       <div className="cartContainer">
         <CartHeader activeState={1} />
@@ -89,7 +75,7 @@ class Cart extends Component {
               >
                 MY BDV CART
                 <div className="bestValueText">BEST VALUE</div>
-                <div className="saveAmount">Save Rs. {cartTotal - bdvTotal}</div>
+                <div className="saveAmount">Save Rs. {Math.round(cartTotal - bdvTotal)}</div>
               </Button>
             </div>
             <div className="cartItemListContainer">

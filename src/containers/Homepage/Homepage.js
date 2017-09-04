@@ -29,7 +29,6 @@ class Homepage extends Component {
 
   render() {
     const { isSearchInitiated } = this.state;
-    console.log('this.state.medicines.topSeller is ', this.state.medicines.topSeller);
     return (
       <div className="homePageContainer">
         <Header onChange={(val) => {this.onChange(val)}}/>
