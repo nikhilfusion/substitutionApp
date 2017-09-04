@@ -1,6 +1,6 @@
 .comparePageContainer {
   width: 100%;
-  min-height: 90vh;
+  min-height: 99vh;
 }
 
 .comparePageHeader {
@@ -10,7 +10,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 30px;
   font-size: 32px;
   position: relative;
 }
@@ -20,6 +19,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .substituteListContainer {
@@ -34,6 +34,54 @@
   overflow: auto;
 }
 
-.substituteCardContainer {
+.comparePageContainer .medicineCardContainer {
   padding: 15px;
+  border-bottom: 0.5px solid #efefef;
+}
+
+.comparePageContainer .medicineCardContainer:hover {
+  box-shadow: inset 0 0 0 2px #8a96cb;
+  background-color: transparent;
+}
+
+.titleContainer {
+  width: 50%;
+  text-align: center;
+}
+
+.titleText {
+  padding: 15px;
+  font-size: 24px;
+}
+
+.subTitleText {
+  padding: 15px;
+  font-size: 14px;
+  opacity: 0.5;
+}
+
+.cartButtonContainer {
+  width: 50%;
+  margin: 0 auto;
+  padding: 15px;
+  max-height: 100px;
+  background-color: #353b6f;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartFooterButton {
+  color: #ffffff;
+  border: 0.5px solid #ffffff;
+  background-color: rgba(0,0,0,0.1);
+  padding: 15px 30px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.cartFooterButton:hover {
+  text-decoration: none;
+  color: #ffffff;
 }
