@@ -12,6 +12,7 @@ class ComparePage extends Component {
     this.state = {
       primaryMedicineId: '12345',
       substitutes: [],
+      medicineName: ''
     };
   }
 
@@ -19,13 +20,14 @@ class ComparePage extends Component {
     api.getTopSellerMedicines().then((medicines) => {
       medicines.topSeller.forEach((seller) => {
         if(seller[Object.keys(seller)[0]]._medicineId == this.props.params.primaryMedicineId) {
-          this.setState({substitutes: seller[Object.keys(seller)[0]]._substitute});
+          console.log('seller[Object.keys(seller)[0]]')
+          this.setState({substitutes: seller[Object.keys(seller)[0]]._substitute, medicineName: seller[Object.keys(seller)[0]]._medicineName});
         }
       })
     })
   }
   render() {
-    const { substitutes } = this.state;
+    const { substitutes, medicineName } = this.state;
     return (
       <div className="comparePageContainer">
         <div className="comparePageHeader">
@@ -36,7 +38,7 @@ class ComparePage extends Component {
             <Link className="cartButton" to="/cart">
               <Glyphicon glyph="shopping-cart" />
             </Link>
-            Substitutes for XYZ
+            Substitutes for {medicineName}
           </div>
         </div>
         <div className="substituteListContainer">
