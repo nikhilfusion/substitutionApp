@@ -1,0 +1,39 @@
+.comparePageContainer {
+  width: 100%;
+  min-height: 90vh;
+}
+
+.comparePageHeader {
+  background-color: #353b6f;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  font-size: 32px;
+  position: relative;
+}
+
+.comparePageHeader .container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.substituteListContainer {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50%;
+  margin: 0 auto;
+  max-height: 60vh;
+  overflow: auto;
+}
+
+.substituteCardContainer {
+  padding: 15px;
+}
