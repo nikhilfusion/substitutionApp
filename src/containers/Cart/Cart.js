@@ -35,6 +35,7 @@ class Cart extends Component {
         const quantity = index < 0 ? 1 : localData[index].quantity;
         bdvTotal += quantity * cart[Object.keys(cart)[0]]._price;
         this.setState({bdvTotal: bdvTotal});
+        localStorage.setItem("bdvTotal", bdvTotal);
       })
 
       currentCart.forEach((cart) => {
@@ -44,8 +45,8 @@ class Cart extends Component {
         const quantity = index < 0 ? 1 : localData[index].quantity;
         cartTotal += quantity * cart[Object.keys(cart)[0]]._price;
         this.setState({cartTotal: cartTotal});
+        localStorage.setItem("cartTotal", cartTotal);
       })
-
     })
   }
 

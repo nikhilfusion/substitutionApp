@@ -31,8 +31,7 @@ class Partners extends Component {
     super(props);
 
     this.state = {
-      selectedPartnerId: null,
-      selectedCartTotal: 123,
+      selectedPartnerId: null
     };
   }
 
@@ -48,7 +47,8 @@ class Partners extends Component {
   }
 
   render() {
-    const { selectedPartnerId, selectedCartTotal } = this.state;
+    const { selectedPartnerId } = this.state;
+    const selectedCartTotal = localStorage.getItem("bdvTotal") || localStorage.getItem("cartTotal");
     return (
       <div className="cartContainer">
         <CartHeader activeState={2} />

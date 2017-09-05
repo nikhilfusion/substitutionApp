@@ -9,12 +9,13 @@ class OrderSuccess extends Component {
 
     this.state = {
       // cartData: JSON.parse(localStorage.getItem('cartData')) || {},
-      cartData: {},
+      //cartData: {},
       // selectedPartner: JSON.parse(localStorage.getItem('selectedPartner')) || {},
-      selectedPartner: {}
     };
 
     localStorage.removeItem('cartData');
+    localStorage.removeItem('cartTotal');
+    localStorage.removeItem('bdvTotal');
   }
 
   returnToHome(){
@@ -23,7 +24,8 @@ class OrderSuccess extends Component {
   }
 
   render() {
-    const { selectedPartner } = this.state;
+    const selectedPartner = JSON.parse(localStorage.getItem("selectedPartner"));
+    console.log('selectedPartner is ', selectedPartner.name);
     return (
       <div className="orderSuccessContainer">
         <div className="orderSuccessCard">
