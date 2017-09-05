@@ -16,7 +16,7 @@ export default class TopSellingList extends Component {
   }
 
   render() {
-    const { searchText } = this.props;
+    const { searchText, pincode } = this.props;
     let medicines = this.props.medicines;
     if (searchText) {
       medicines = medicines.filter(medicine => {
@@ -33,6 +33,7 @@ export default class TopSellingList extends Component {
               key={key}
               medName={medicine[Object.keys(medicine)[0]]}
               maxDiscount={this.getMaxDiscount(medicine[Object.keys(medicine)])}
+              pincode={pincode}
             />
           )}
         </div>

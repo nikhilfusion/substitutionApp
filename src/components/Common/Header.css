@@ -99,9 +99,9 @@
   color: #a0a5d0;
   font-size: 12px;
 }
-.selected {
+/*.selected {
   background-color: yellow;
-}
+}*/
 
 .pincodeValue.active, .pincodeValue:active {
   outline: none;

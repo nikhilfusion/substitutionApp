@@ -22,12 +22,11 @@ const createRoutes = store => ( // eslint-disable-line no-unused-vars
   <Route component={App}>
     <IndexRoute component={Homepage} />
     <Route path="/" component={Homepage} />
-    <Route path="/:pincode" component={Homepage} />
-    <Route path="/compare/:primaryMedicineId" component={ComparePage} />
     <Route path="/cart" component={Cart} />
     <Route path="/partners" component={Partners} />
     <Route path="/confirm" component={OrderSuccess} />
-    <Route path="/test-counter" component={CounterPage} />
+    <Route path="/:pincode" component={Homepage} />
+    <Route path="/:pincode/compare/:primaryMedicineId" component={ComparePage} />
     <Route path="*" component={NotFoundPage} />
   </Route>
 );

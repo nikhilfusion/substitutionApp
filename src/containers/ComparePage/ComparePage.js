@@ -24,8 +24,8 @@ class ComparePage extends Component {
     //     }
     //   })
     // })
-
-    api.getTopSellerMedicines().then(medicines => {
+    const pincode = this.props.params.pincode;
+    api.getTopSellerMedicines(pincode).then(medicines => {
       const medObject = medicines.topSeller.find(seller =>
         seller[Object.keys(seller)[0]]._medicineId === Number(this.props.params.primaryMedicineId));
       const primaryMedicine = Object.values(medObject)[0];
@@ -39,6 +39,7 @@ class ComparePage extends Component {
 
   render() {
     const { substitutes, medicineName, primaryMedicine } = this.state;
+    const pincode = this.props.params.pincode;
     return (
       <div className="comparePageContainer">
         <div className="comparePageHeader">
@@ -60,7 +61,7 @@ class ComparePage extends Component {
         </div>
         <div className="substituteListContainer">
           {substitutes.map((subs, key) =>
-            <MedicineCard medName={subs} isSubsBanner key={key} primaryMed={primaryMedicine} />)}
+            <MedicineCard medName={subs} isSubsBanner key={key} primaryMed={primaryMedicine} pincode={pincode}/>)}
         </div>
         <div className="cartButtonContainer">
           <Link className="cartFooterButton" to="/cart">View Cart</Link>

@@ -41,7 +41,7 @@ class Homepage extends Component {
       <div className="homePageContainer">
         <Header onChange={(val, pincode) => {this.onChange(val, pincode)}} pincode={pincode}/>
         <div className="container">
-          {!isSearchInitiated && <TopSellingList medicines={this.state.medicines.topSeller} searchText={this.state.searchText} />}
+          {!isSearchInitiated && <TopSellingList medicines={this.state.medicines.topSeller} searchText={this.state.searchText} pincode={pincode}/>}
           {isSearchInitiated && <SearchResultList medicines={this.state.medicines.topSeller} />}
         </div>
       </div>

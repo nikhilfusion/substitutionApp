@@ -34,6 +34,7 @@ export default class MedicineCard extends Component {
   }
 
   render() {
+    const pincode = this.props.pincode;
     const {
       _medicineId,
       _medicineName,
@@ -44,8 +45,7 @@ export default class MedicineCard extends Component {
       _substitute,
       _quantityPerFormFactor
     } = this.props.medName;
-
-    const compareLink = `/compare/${_medicineId}`;
+    const compareLink = `/${pincode}/compare/${_medicineId}`;
 
     const { primaryMed, isSubsBanner, maxDiscount } = this.props;
 
